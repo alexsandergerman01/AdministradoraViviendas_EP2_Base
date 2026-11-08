@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cl.duoc.viviendas.controller.MainController">
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+    </padding>
+    <center>
+        <HBox spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <!-- Formulario de Registro -->
+                <VBox prefWidth="350.0" spacing="10.0">
+                    <children>
+                        <Label text="Registro de viviendas">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                        <GridPane hgap="10.0" vgap="8.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="NEVER" minWidth="100.0" />
+                                <ColumnConstraints hgrow="ALWAYS" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="30.0" />
+                                <RowConstraints minHeight="30.0" />
+                                <RowConstraints minHeight="30.0" />
+                                <RowConstraints minHeight="30.0" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Tipo:" />
+                                <ComboBox fx:id="cmbTipo" prefWidth="200.0" promptText="Seleccione..." GridPane.columnIndex="1" />
+                                <Label text="Código:" GridPane.rowIndex="1" />
+                                <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label text="Superficie (m²):" GridPane.rowIndex="2" />
+                                <TextField fx:id="txtSuperficie" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label text="Habitaciones:" GridPane.rowIndex="3" />
+                                <TextField fx:id="txtHabitaciones" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            </children>
+                        </GridPane>
+
+                        <!-- Datos Departamento -->
+                        <TitledPane fx:id="paneDepto" animated="false" collapsible="false" text="Datos del departamento">
+                            <content>
+                                <VBox spacing="8.0">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                            <children>
+                                                <Label text="Piso:" />
+                                                <TextField fx:id="txtPiso" prefWidth="180.0" />
+                                            </children>
+                                        </HBox>
+                                        <CheckBox fx:id="chkGastoComun" text="Gasto común al día" />
+                                        <CheckBox fx:id="chkEstacionamiento" text="Estacionamiento asignado" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Datos Casa -->
+                        <TitledPane fx:id="paneCasa" animated="false" collapsible="false" text="Datos de la casa">
+                            <content>
+                                <VBox spacing="8.0">
+                                    <children>
+                                        <CheckBox fx:id="chkPatio" text="Cuenta con patio" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <HBox alignment="CENTER_RIGHT">
+                            <children>
+                                <Button fx:id="btnRegistrar" onAction="#handleRegistrar" prefWidth="100.0" text="Registrar" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Tabla y Botón Eliminar -->
+                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <TableView fx:id="tblViviendas" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colTipo" prefWidth="110.0" text="Tipo" />
+                                <TableColumn fx:id="colCodigo" prefWidth="90.0" text="Código" />
+                                <TableColumn fx:id="colSuperficie" prefWidth="100.0" text="Superficie (m²)" />
+                                <TableColumn fx:id="colHabitaciones" prefWidth="90.0" text="Habitaciones" />
+                                <TableColumn fx:id="colCosto" prefWidth="110.0" text="Costo arriendo" />
+                            </columns>
+                        </TableView>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Button fx:id="btnEliminar" onAction="#handleEliminar" prefWidth="100.0" text="Eliminar" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </center>
+    <bottom>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Separator prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Separator>
+                <Label fx:id="lblMensaje" text="" textFill="#333333">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="5.0" />
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+    </bottom>
+</BorderPane>
